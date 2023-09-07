@@ -27,7 +27,7 @@
     <div class="box-content">
       <form class="form-horizontal" action="{{ url('/products/').$product->id }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT');
+        @method('PUT')
         <fieldset>
 
           <div class="control-group">
@@ -133,7 +133,7 @@
           
           <div class="form-actions">
           <button  type="submit" class="btn btn-primary">Save changes</button>
-          <button class="btn">Cancel</button>
+          <button class="btn" herf="{{ url('/products/') }}">Cancel</button>
           </div>
         </fieldset>
         </form>

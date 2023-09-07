@@ -81,7 +81,7 @@ class ProductController extends Controller
 
          ($product['image']=implode("|",$image));
          $product->save();
-            return redirect()->back()->with('message','Product SuccessFully Added');
+            return redirect('/product')->with('message','Product SuccessFully Added');
             
         }
         else{
@@ -113,8 +113,9 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request,  $id)
+    public function update(Request $request, Product $product)
     {
+        
         $update = $product->update([
             'cat_id'=>$product->category,
             'subcat_id'=>$product->subcategory,
@@ -125,14 +126,41 @@ class ProductController extends Controller
             'description'=>$product->description,
             'price'=>$product->price,
             'stockin'=>$product->stockin,
-            'image'=>$product->image,
-
-
-
-            
+                       
             
         ]);
-        if
+
+         $image = array();
+         if($files = $request->file('image')){
+            
+            $i = 0;
+            foreach($files as $file){
+                $name = $file->getClientOriginalName();
+                $fileNameExtract = explode('.',$name);
+                $fileName = $fileNameExtract[0];
+                $fileName.=time();
+                $fileName.=$i;
+                $fileName.='.';
+                $fileName.=$fileNameExtract[1];
+                
+                $file->move('product_image', $fileName);
+                $image[]=$fileName;
+                $i++;
+                
+            }
+            ($product['image']=implode("|",$image));
+            // $product->update();
+
+            dd($product->update());
+            
+            return redirect('/products')->with('message','Update Successfull');
+            
+        }
+        else{
+            echo" Fail ";
+        }
+         
+        
     }
 
     /**
