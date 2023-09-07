@@ -49,7 +49,7 @@ class HomeController extends Controller
 
         //For Related Products..........
         $category_id = $product->cat_id;
-        $related_products = Product::where('cat_id',$category_id)->latest()->limit(4)->get();
+        $related_products = Product::where('cat_id',$category_id)->latest()->limit(3)->get();
         
      
         

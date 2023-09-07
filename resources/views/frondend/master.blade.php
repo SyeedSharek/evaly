@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.cs') }}s">
 <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/fontstyle.css') }}">
+<link rel="stylesheet" href="{{ asset('css/fontstylecustom.css') }}">
 <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}">
 <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -68,6 +69,7 @@
 <script src="{{ asset('js/aos.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
+
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>

@@ -58,7 +58,7 @@
     <i class="fa fa-star"></i>
     <span>( 138 reviews )</span>
     </div>
-    <div class="product__details__price">{{ $product->price }} <span>{{ $product->price }}</span></div>
+    <div class="product__details__price">&#2547;{{ $product->price }} <span>&#2547;{{ $product->price }}</span></div>
     <p> {!! $product->description !!}</p>
     <div class="product__details__button">
     <div class="quantity">
@@ -67,7 +67,7 @@
     <input type="text" value="1">
     </div>
     </div>
-    <a href="{{  }}" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
+    <a href="" class="cart-btn"><span class="icon_bag_alt"></span> Add to cart</a>
     <ul>
     <li><a href="#"><span class="icon_heart_alt"></span></a></li>
     <li><a href="#"><span class="icon_adjust-horiz"></span></a></li>
@@ -194,32 +194,22 @@
     <h5>RELATED PRODUCTS</h5>
     </div>
     </div>
+
+
+
+    @foreach ($related_products as $related_product )
+
+    @php
+       $related_product['image'] = explode('|',$related_product->image);
+       $images = $related_product->image[0];
+    @endphp
+        
+    
+
     <div class="col-lg-3 col-md-4 col-sm-6">
     <div class="product__item">
-    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-1.jpg">
-    <div class="label new">New</div>
-    <ul class="product__hover">
-    <li><a href="img/product/related/rp-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-    </ul>
-    </div>
-    <div class="product__item__text">
-    <h6><a href="#">Buttons tweed blazer</a></h6>
-    <div class="rating">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    </div>
-    <div class="product__price">$ 59.0</div>
-    </div>
-    </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="product__item">
-    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-2.jpg">
+    <div class="product__item__pic set-bg" data-setbg="{{ asset('/product/'.$images) }}">
+        <img style="width: 400px; height: 480px;" src="{{ asset('/product_image/'.$images) }}" alt="">
     <ul class="product__hover">
     <li><a href="img/product/related/rp-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
     <li><a href="#"><span class="icon_heart_alt"></span></a></li>
@@ -227,7 +217,7 @@
     </ul>
     </div>
     <div class="product__item__text">
-    <h6><a href="#">Flowy striped skirt</a></h6>
+    <h6><a href="#">{{ $related_product->name }}</a></h6>
     <div class="rating">
     <i class="fa fa-star"></i>
     <i class="fa fa-star"></i>
@@ -235,55 +225,13 @@
     <i class="fa fa-star"></i>
     <i class="fa fa-star"></i>
     </div>
-    <div class="product__price">$ 49.0</div>
+    <div class="product__price">&#2547;{{ $related_product->price }}</div>
     </div>
     </div>
     </div>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="product__item">
-    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-3.jpg">
-    <div class="label stockout">out of stock</div>
-    <ul class="product__hover">
-    <li><a href="img/product/related/rp-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-    </ul>
-    </div>
-    <div class="product__item__text">
-    <h6><a href="#">Cotton T-Shirt</a></h6>
-    <div class="rating">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    </div>
-    <div class="product__price">$ 59.0</div>
-    </div>
-    </div>
-    </div>
-    <div class="col-lg-3 col-md-4 col-sm-6">
-    <div class="product__item">
-    <div class="product__item__pic set-bg" data-setbg="img/product/related/rp-4.jpg">
-    <ul class="product__hover">
-    <li><a href="img/product/related/rp-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
-    <li><a href="#"><span class="icon_heart_alt"></span></a></li>
-    <li><a href="#"><span class="icon_bag_alt"></span></a></li>
-    </ul>
-    </div>
-    <div class="product__item__text">
-    <h6><a href="#">Slim striped pocket shirt</a></h6>
-    <div class="rating">
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    <i class="fa fa-star"></i>
-    </div>
-    <div class="product__price">$ 59.0</div>
-    </div>
-    </div>
-    </div>
+    @endforeach
+   
+   
     </div>
     </div>
     </section>
