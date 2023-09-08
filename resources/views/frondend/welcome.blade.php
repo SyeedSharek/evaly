@@ -67,7 +67,8 @@
     </div>
     </div>
     </div>
-    
+   
+
     
      <div class="untree_co-section">
       <div class="container">
@@ -89,9 +90,22 @@
                      <h3 class="title"><a href="#">{{ $product->name }}</a></h3>
                   <div class="price">
                      <span>{{ $product->price }}</span>
+
                   </div>
+                  <form action="{{ url('/add_to_cart/') }}" method="POST">
+                     @csrf
+                     <input type="hidden" name="quantity" value="1">
+                     <input type="hidden" name="id" value="{{ $product->id }}">
+
+
+                  <button href="" class="cart-btn"><i class="fa fa shoping-cart"></i> Add to cart</button>
+
+                  </form>
+                  
             </div>
-          </div> 
+
+          </div>
+         
 
           @endforeach
          
@@ -208,5 +222,7 @@
     </div>
     </div> 
     </div> 
+
+    
 
 @endsection

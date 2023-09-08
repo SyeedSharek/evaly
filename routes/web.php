@@ -7,6 +7,7 @@ use App\Http\Controllers\SupperAdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 
 /*
@@ -60,7 +61,5 @@ Route::get('/subcat/{id}',[ProductController::class,'subcat_change']);
 
 
 
-
-
-
-//.................
+//Add Card.................
+Route::post('/add_to_cart',[CartController::class,'cart_details']);
