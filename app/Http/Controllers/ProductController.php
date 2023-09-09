@@ -173,4 +173,8 @@ class ProductController extends Controller
             return redirect()->back();
         }
     }
+
+    public function cat_details(){
+        return view('frondend.product_pages.shopping_data');
+    }
 }

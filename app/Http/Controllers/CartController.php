@@ -22,8 +22,8 @@ class CartController extends Controller
 
         Cart::add($data);
         cardArray();
-        
-        return redirect('/frondend/product_pages/cart_details');
+      
+        return redirect()->back();
         
 
         

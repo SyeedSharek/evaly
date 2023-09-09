@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 
 /*
@@ -58,8 +59,12 @@ Route::resource('/subcategories',SubCategoryController::class);
 
 Route::resource('/products',ProductController::class);
 Route::get('/subcat/{id}',[ProductController::class,'subcat_change']);
+Route::get('/cat_by_id',[ProductController::class,'cat_details']);
 
 
 
 //Add Card.................
 Route::post('/add_to_cart',[CartController::class,'cart_details']);
+
+//Checkout Card.................
+Route::get('/checkout/{id}',[CheckoutController::class,'index']);
