@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="box-content">
-      <form class="form-horizontal" action="{{ url('/products/').$product->id }}" method="POST" enctype="multipart/form-data">
+      <form class="form-horizontal" action="{{ url('/products/'.$product->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <fieldset>
@@ -82,8 +82,13 @@
             <div class="control-group">
               <label class="control-label" for="focusedInput">Color</label>
               <div class="controls">
-               
-                <input name="color[]" type="text" value="{{ $product->color }}" data-role="tagsinput" placeholder="Add Color" />
+                {{-- <input name="color[]" type="text" value="{{ $product->color }}" data-role="tagsinput" placeholder="Add Color" /> --}}
+                {{-- explode(',',json_decode($product->color)[0]) --}}
+                @php
+                    $arryColors = explode(',',json_decode($product->color)[0]);
+                    $string = implode(",", $arryColors);
+                @endphp
+                <input id="color" name="color[]" type="text" value="{{ $string }}"  data-role="tagsinput" placeholder="Add Color" />
               </div>
               </div>
 
@@ -108,12 +113,12 @@
                     <input name="price" class="input-xlarge focused" id="focusedInput" type="text" value="{{ $product->price }}">
                   </div>
                   </div>
-                  <div class="control-group">
+                   <div class="control-group">
                     <label class="control-label" for="focusedInput">Stock In</label>
                     <div class="controls">
                       <input name="stockin" class="input-xlarge focused" id="focusedInput" type="text" value="{{ $product->stockin }}">
                     </div>
-                    </div>
+                    </div> 
 
        
         
@@ -122,7 +127,7 @@
 							  <label class="control-label" for="fileInput">File input</label>
 							  <div class="controls">
 								<input name="image[]"  class="input-file uniform_on"  type="file" multiple>
-                value="{{ $product->image }} "
+                
 							  </div>
 							</div> 
         

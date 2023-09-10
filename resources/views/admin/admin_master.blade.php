@@ -190,6 +190,6 @@
 
 		<script src="{{ asset('admin/js/tagsinput.js') }}"></script>
 	<!-- end: JavaScript-->
-	
+	@stack('script')
 </body>
 </html>

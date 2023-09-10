@@ -117,15 +117,15 @@ class ProductController extends Controller
     {
         
         $update = $product->update([
-            'cat_id'=>$product->category,
-            'subcat_id'=>$product->subcategory,
-            'name'=>$product->name,
-            'size'=>$product->size,
-            'color'=>$product->color,
-            'brand'=>$product->brand,
-            'description'=>$product->description,
-            'price'=>$product->price,
-            'stockin'=>$product->stockin,
+            'cat_id'=>$request->category,
+            'subcat_id'=>$request->subcategory,
+            'name'=>$request->name,
+            'size'=>$request->size,
+            'color'=>$request->color,
+            'brand'=>$request->brand,
+            'description'=>$request->description,
+            'price'=>$request->price,
+            'stockin'=>$request->stockin,
                        
             
         ]);
@@ -151,7 +151,7 @@ class ProductController extends Controller
             ($product['image']=implode("|",$image));
             // $product->update();
 
-            dd($product->update());
+          
             
             return redirect('/products')->with('message','Update Successfull');
             
@@ -175,6 +175,7 @@ class ProductController extends Controller
     }
 
     public function cat_details(){
-        return view('frondend.product_pages.shopping_data');
+        $categories = Category::all();
+        return view('frondend.product_pages.shopping_data',compact('categories'));
     }
 }

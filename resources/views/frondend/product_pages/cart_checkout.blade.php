@@ -27,52 +27,54 @@
     <th class="product-remove">Remove</th>
     </tr>
     </thead>
+    @php
+       
+        $cart_array = cardArray();
+
+    @endphp
+
+
+
+    @foreach ($cart_array as $product )
+        
+    @php
+        $images = $product['attributes'][0];
+        $images = explode('|',$images);
+        $images = $images[0];
+    @endphp
+    
     <tbody>
     <tr>
     <td class="product-thumbnail">
-    <img src="images/cloth_1.jpg" alt="Image" class="img-fluid">
+    <img src="{{ asset('/product_image/'.$images) }}" alt="Image" class="img-fluid">
     </td>
     <td class="product-name">
-    <h2 class="h5 text-black">Top Up T-Shirt</h2>
+    <h2 class="h5 text-black">{{ $product['name'] }}</h2>
     </td>
-    <td>$49.00</td>
+    <td>{{ $product['price'] }}&#2547;</td>
     <td>
     <div class="input-group mb-3" style="max-width: 120px;">
     <div class="input-group-prepend">
     <button class="btn btn-outline-black js-btn-minus" type="button">&minus;</button>
     </div>
-    <input type="text" class="form-control text-center" value="1" placeholder aria-label="Example text with button addon" aria-describedby="button-addon1">
+
+    <input {{ $product['price'] }}  type="hidden" class="iprice" value="{{ $product['price'] }} " id="">
+
+    <input name="quantity" type="text" class="form-control text-center iquantity" value="1" placeholder aria-label="Example text with button addon" aria-describedby="button-addon1">
     <div class="input-group-append">
     <button class="btn btn-outline-black js-btn-plus" type="button">&plus;</button>
     </div>
     </div>
     </td>
-    <td>$49.00</td>
-    <td><a href="#" class="btn btn-black btn-sm">X</a></td>
+    <td class="total_price">  	&#2547; </td>
+    <td><a href="{{ url('/delete_cart/'.$product['id']) }}" class="btn btn-black btn-sm">X</a></td>
     </tr>
-    <tr>
-    <td class="product-thumbnail">
-    <img src="images/cloth_2.jpg" alt="Image" class="img-fluid">
-    </td>
-    <td class="product-name">
-    <h2 class="h5 text-black">Polo Shirt</h2>
-    </td>
-    <td>$49.00</td>
-    <td>
-    <div class="input-group mb-3" style="max-width: 120px;">
-    <div class="input-group-prepend">
-    <button class="btn btn-outline-black js-btn-minus" type="button">&minus;</button>
-    </div>
-    <input type="text" class="form-control text-center" value="1" placeholder aria-label="Example text with button addon" aria-describedby="button-addon1">
-    <div class="input-group-append">
-    <button class="btn btn-outline-black js-btn-plus" type="button">&plus;</button>
-    </div>
-    </div>
-    </td>
-    <td>$49.00</td>
-    <td><a href="#" class="btn btn-black btn-sm">X</a></td>
-    </tr>
+
+    
+    
     </tbody>
+
+    @endforeach
     </table>
     </div>
     </form>
@@ -110,18 +112,24 @@
     </div>
     <div class="row mb-3">
     <div class="col-md-6">
-    <span class="text-black">Subtotal</span>
+    <span class="text-black">SubTotal</span>
     </div>
     <div class="col-md-6 text-right">
-    <strong class="text-black">$230.00</strong>
+    <strong class="text-black">{{ Cart::getSubTotal() }}</strong>
     </div>
     </div>
     <div class="row mb-5">
     <div class="col-md-6">
+    <span class="text-black">Delivary Charge</span>
+    </div>
+    <div class="col-md-6 text-right">
+    <strong class="text-black">50</strong>
+    </div>
+    <div class="col-md-6">
     <span class="text-black">Total</span>
     </div>
     <div class="col-md-6 text-right">
-    <strong class="text-black">$230.00</strong>
+    <strong class="text-black">{{ Cart::getTotal()+50}}</strong>
     </div>
     </div>
     <div class="row">
@@ -135,5 +143,24 @@
     </div>
     </div>
     </div>
+
+    <script>
+        var iprice = document.getElementsByClassName('iprice');
+        var iquantity = document.getElementsByClassName('iquantity');
+        var itotal = document.getElementsByClassName('total_price');
+
+        function subTotal(){
+
+            for(i=0;i<iprice.lenght;i++){
+                
+            itotal[i].innerText = (iprice[i].value)*(iquantity[i].value);
+            }
+
+        }
+
+        subTotal();
+
+
+    </script>
 
 @endsection

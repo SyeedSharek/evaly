@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="box-content">
-            <table class="table table-striped table-bordered bootstrap-datatable datatable">
+            <table class="table table-striped table-bordered ">
               <thead>
                   <tr>
                       <th style="width: 10%">SL</th>
@@ -29,8 +29,8 @@
                                   
                 
                  <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{ $subcategory->category->name }}</td>
+                    <td>{{$loop->index+1}}</td>
+                    <td>{{data_get($subcategory->category,'name','N/A') }}</td>
                     <td>{{ $subcategory->name }}</td>
                     <td class="center">{{ \Carbon\Carbon::parse($subcategory->created_at)->format('Md,Y') }}</td>
 

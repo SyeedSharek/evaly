@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('brand');
             $table->string('description');
             $table->float('price');
-            $table->integer('stockin');
+            $table->string('stockin');
             $table->string('image');
             $table->boolean('status')->default('1');
 

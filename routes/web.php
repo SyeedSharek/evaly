@@ -59,7 +59,7 @@ Route::resource('/subcategories',SubCategoryController::class);
 
 Route::resource('/products',ProductController::class);
 Route::get('/subcat/{id}',[ProductController::class,'subcat_change']);
-Route::get('/cat_by_id',[ProductController::class,'cat_details']);
+Route::get('/cat_by_id',[ProductController::class,'cat_details'])->name('cat.view');
 
 
 
@@ -67,4 +67,6 @@ Route::get('/cat_by_id',[ProductController::class,'cat_details']);
 Route::post('/add_to_cart',[CartController::class,'cart_details']);
 
 //Checkout Card.................
-Route::get('/checkout/{id}',[CheckoutController::class,'index']);
+Route::get('/checkout',[CheckoutController::class,'index']);
+Route::get('/login_check',[CheckoutController::class,'login']);
+Route::get('/delete_cart/{id}',[CheckoutController::class,'cart_delete']);

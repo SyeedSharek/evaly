@@ -123,13 +123,19 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-       
-        $delete = $category->delete();
-        
-
-        
-        if($delete){
-            return redirect()->back();
+        $destination = 'storage/'.$category->image;
+        $message = "Something went wrong";
+    
+        if(File::exists($destination)){
+                
+            File::delete($destination); 
         }
+        
+        if($category->delete()){
+            $message = "category deleted successfully";
+        }
+        
+        return redirect()->back()->with('message',$message);
+        
     }
 }

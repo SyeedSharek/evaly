@@ -42,10 +42,10 @@
                                   
                 
                 <tr>
-                    <td>{{$key+1}}</td>
+                    <td>{{$loop->index}}</td>
                     
-                    <td>{{ $product->category->name }}</td>
-                    <td>{{ $product->subcategory->name }}</td>
+                    <td>{{ data_get($product->category,'name','N/A') }}</td>
+                    <td>{{ data_get($product->subcategory,'name','N/A') }}</td>
                     <td>{{ $product->name }}</td>
                    
 

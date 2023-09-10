@@ -69,7 +69,7 @@
 <script src="{{ asset('js/aos.js') }}"></script>
 <script src="{{ asset('js/custom.js') }}"></script>
 <script src="{{ asset('js/main.js') }}"></script>
-
+<script src="{{ asset('js/cart.js') }}"></script>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
 <script>
