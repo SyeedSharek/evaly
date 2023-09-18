@@ -96,7 +96,7 @@
                 <div class="control-group" >
                     <label style="color: #f7f1f1" class="control-label" for="cars">Choose Category:</label>
                     <div class="controls">
-                     <select name="subcategory" id="" style="margin-left: 20px" @required(true)>
+                     <select name="category" id="" style="margin-left: 20px" @required(true)>
                          <option value="">Select Category</option>
                          @foreach ($categories as $category )
                                                            

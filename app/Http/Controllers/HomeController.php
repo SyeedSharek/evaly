@@ -57,6 +57,25 @@ class HomeController extends Controller
         return view('frondend.product_pages.shopdetails',compact('categories','subcategories','product','related_products'));
     }
 
+    public function cat_by_product($id){
+        $categories = Category::all();
+        $products = Product::where('status',1)->where('cat_id',$id)->get();
+        $subcategories = SubCategory::all();
+        return view('frondend.product_pages.cat_by_product',compact('categories','products','subcategories'));
+
+        
+    }
+
+    public function subcat_by_product($id){
+        $categories = Category::all();
+        $products = Product::where('status',1)->where('subcat_id',$id)->get();
+        $subcategories = SubCategory::all();
+        return view('frondend.product_pages.cat_by_product',compact('categories','products','subcategories'));
+
+        
+    }
+    
+
     
     
 }

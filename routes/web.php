@@ -32,6 +32,8 @@ Route::get('/',[HomeController::class,'index']);
 Route::get('/about',[HomeController::class,'about_details']);
 Route::get('/contact',[HomeController::class,'contact_details']);
 Route::get('/view_product/{id}',[HomeController::class,'shopdetails']);
+Route::get('/cat_by_id/{id}',[HomeController::class,'cat_by_product']);
+Route::get('/subcat_by_id/{id}',[HomeController::class,'subcat_by_product']);
 
 
 // Admin Route....................
@@ -59,7 +61,7 @@ Route::resource('/subcategories',SubCategoryController::class);
 
 Route::resource('/products',ProductController::class);
 Route::get('/subcat/{id}',[ProductController::class,'subcat_change']);
-Route::get('/cat_by_id',[ProductController::class,'cat_details'])->name('cat.view');
+
 
 
 

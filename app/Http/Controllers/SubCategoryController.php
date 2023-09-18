@@ -67,8 +67,8 @@ class SubCategoryController extends Controller
     public function update(Request $request, SubCategory $subcategory)
     {
         $update = $subcategory->update([
-            'cat_id'=>$subcategory->subcategory,
-            'name'=>$subcategory->name
+            'cat_id'=>$request->category,
+            'name'=>$request->name,
             
         ]);
 

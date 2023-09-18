@@ -122,11 +122,17 @@ class CategoryController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Category $category)
-    {
+    { 
+        
+        
         $destination = 'storage/'.$category->image;
+        dd($destination);
+       
+        
         $message = "Something went wrong";
     
         if(File::exists($destination)){
+            dd(File::exists($destination));
                 
             File::delete($destination); 
         }

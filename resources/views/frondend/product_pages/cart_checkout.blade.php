@@ -51,7 +51,7 @@
     <td class="product-name">
     <h2 class="h5 text-black">{{ $product['name'] }}</h2>
     </td>
-    <td>{{ $product['price'] }}&#2547;</td>
+    <td >{{ $product['price'] }}&#2547;</td>
     <td>
     <div class="input-group mb-3" style="max-width: 120px;">
     <div class="input-group-prepend">
@@ -60,13 +60,14 @@
 
     <input {{ $product['price'] }}  type="hidden" class="iprice" value="{{ $product['price'] }} " id="">
 
-    <input name="quantity" type="text" class="form-control text-center iquantity" value="1" placeholder aria-label="Example text with button addon" aria-describedby="button-addon1">
+    <input name="quantity" type="text" class="form-control text-center iquantity" onchange="subTotal()" value="{{ $product['quantity'] }}" placeholder aria-label="Example text with button addon" aria-describedby="button-addon1">
     <div class="input-group-append">
     <button class="btn btn-outline-black js-btn-plus" type="button">&plus;</button>
     </div>
     </div>
     </td>
-    <td class="total_price">  	&#2547; </td>
+    <td class="total_price"></td>
+    
     <td><a href="{{ url('/delete_cart/'.$product['id']) }}" class="btn btn-black btn-sm">X</a></td>
     </tr>
 
@@ -151,7 +152,7 @@
 
         function subTotal(){
 
-            for(i=0;i<iprice.lenght;i++){
+            for(i=0;i<iprice.length;i++){
                 
             itotal[i].innerText = (iprice[i].value)*(iquantity[i].value);
             }

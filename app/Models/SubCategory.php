@@ -9,7 +9,7 @@ use App\Models\Category;
 class SubCategory extends Model
 {
     use HasFactory;
-    protected $fillabel = ['id','cat_id','name','status'];
+    protected $fillable = ['id','cat_id','name','status'];
     
     public function category(){
         

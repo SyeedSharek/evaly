@@ -75,7 +75,11 @@
           <div class="control-group">
             <label class="control-label" for="focusedInput">Size</label>
             <div class="controls">
-              <input name="size[]" type="text" value="{{ $product->size }} " data-role="tagsinput" placeholder="Add Size" />
+              @php
+                $arraysize = explode(',',json_decode($product->size)[0]);
+                $sizes = implode(",",$arraysize);
+              @endphp
+              <input name="size[]" type="text" value="{{ $sizes }} " data-role="tagsinput" placeholder="Add Size" />
             </div>
             </div>
 
@@ -86,9 +90,9 @@
                 {{-- explode(',',json_decode($product->color)[0]) --}}
                 @php
                     $arryColors = explode(',',json_decode($product->color)[0]);
-                    $string = implode(",", $arryColors);
+                    $colors = implode(",", $arryColors);
                 @endphp
-                <input id="color" name="color[]" type="text" value="{{ $string }}"  data-role="tagsinput" placeholder="Add Color" />
+                <input id="color" name="color[]" type="text" value="{{ $colors }}"  data-role="tagsinput" placeholder="Add Color" />
               </div>
               </div>
 
@@ -126,7 +130,7 @@
           <div class="control-group">
 							  <label class="control-label" for="fileInput">File input</label>
 							  <div class="controls">
-								<input name="image[]"  class="input-file uniform_on"  type="file" multiple>
+								<input name="image[]"  class="input-file uniform_on"  type="file" multiple required>
                 
 							  </div>
 							</div> 

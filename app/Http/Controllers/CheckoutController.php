@@ -3,15 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Category;
 use Cart;
 
 class CheckoutController extends Controller
 {
     public function index(){
-        return view('frondend.product_pages.cart_checkout');
+        $categories = Category::all();
+        
+        return view('frondend.product_pages.cart_checkout',compact('categories'));
     }
 
     public function login(){
+        
+        $categories = Category::all();
+        
+        return view('frondend.product_pages.customerlogin',compact('categories'));
         
     }
 

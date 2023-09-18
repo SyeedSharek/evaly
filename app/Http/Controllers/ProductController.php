@@ -81,7 +81,7 @@ class ProductController extends Controller
 
          ($product['image']=implode("|",$image));
          $product->save();
-            return redirect('/product')->with('message','Product SuccessFully Added');
+            return redirect('/products')->with('message','Product SuccessFully Added');
             
         }
         else{
@@ -168,14 +168,38 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $delete = $product->delete();
-        if($delete){
-            return redirect()->back();
+        //$destination = '/product_image/'.$product->image;
+         //dd($destination);
+       
+      
+         $destination = 'product_image/'.$product->image;
+         
+        dd($destination);
+      
+        
+        if(File::exists($destination)){
+
+            dd('exit');
+
+            
+            // File::delete($destination);
+            
+            // $message = "Something Wrong";
+            
         }
+        else{
+            dd('Not Found');
+        }
+        
+        if($product->delete()){
+            $message = "Product Delete";
+        }
+
+        return redirect()->back()->with('message',$message);
+
+       
+        
     }
 
-    public function cat_details(){
-        $categories = Category::all();
-        return view('frondend.product_pages.shopping_data',compact('categories'));
-    }
+    
 }
