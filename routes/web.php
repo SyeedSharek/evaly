@@ -9,6 +9,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CustomerController;
 
 
 /*
@@ -70,5 +71,12 @@ Route::post('/add_to_cart',[CartController::class,'cart_details']);
 
 //Checkout Card.................
 Route::get('/checkout',[CheckoutController::class,'index']);
-Route::get('/login_check',[CheckoutController::class,'login']);
+
 Route::get('/delete_cart/{id}',[CheckoutController::class,'cart_delete']);
+
+// Customer 
+Route::get('/customer_login',[CustomerController::class,'index']);
+Route::post('/login_check',[CustomerController::class,'login']);
+Route::get('/register',[CustomerController::class,'new_register']);
+Route::post('/create_customer',[CustomerController::class,'store']);
+Route::get('/customer_logout',[CustomerController::class,'logout']);

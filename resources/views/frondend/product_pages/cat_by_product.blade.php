@@ -195,7 +195,21 @@
     <i class="fa fa-star"></i>
     </div>
     <div class="product__price">{{ $product->price }}&#2547;</div>
+    <div>
+        <form action="{{ url('/add_to_cart/') }}" method="POST">
+            @csrf
+            <input type="hidden" name="quantity" value="1">
+            <input type="hidden" name="id" value="{{ $product->id }}">
+
+
+         <button href="" class="cart-btn"><i class="fa fa shoping-cart"></i> Add to cart</button>
+
+         </form>
     </div>
+    
+    </div>
+    
+
     </div>
     </div>
     @endforeach
