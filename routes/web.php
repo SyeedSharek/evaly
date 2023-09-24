@@ -69,10 +69,18 @@ Route::get('/subcat/{id}',[ProductController::class,'subcat_change']);
 //Add Card.................
 Route::post('/add_to_cart',[CartController::class,'cart_details']);
 
+
 //Checkout Card.................
 Route::get('/checkout',[CheckoutController::class,'index']);
 
 Route::get('/delete_cart/{id}',[CheckoutController::class,'cart_delete']);
+
+
+
+Route::get('/procedure',[CheckoutController::class,'shipping']);
+Route::get('/payment',[CheckoutController::class,'payment_index']);
+Route::post('/save_shipping_address',[CheckoutController::class,'save_shipping']);
+
 
 // Customer 
 Route::get('/customer_login',[CustomerController::class,'index']);
@@ -80,3 +88,5 @@ Route::post('/login_check',[CustomerController::class,'login']);
 Route::get('/register',[CustomerController::class,'new_register']);
 Route::post('/create_customer',[CustomerController::class,'store']);
 Route::get('/customer_logout',[CustomerController::class,'logout']);
+
+Route::post('/order_place',[CheckoutController::class,'payment_way']);

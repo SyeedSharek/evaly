@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Customer;
+
 use Session;
 
 class CustomerController extends Controller
 {
     public function index(){
-        return view('frondend.customerlogin.login');
+        return view('frondend.customer.login');
     }
 
 
@@ -26,6 +27,7 @@ class CustomerController extends Controller
         $result = Customer::where('email',$email)->where('password',$password)->first();
         if($result){
             Session::put('id',$result->id);
+            Session::put('name',$result->name);
             return view('frondend.product_pages.cart_checkout',compact('categories'));
         }
         else{
@@ -42,28 +44,23 @@ class CustomerController extends Controller
         
         $categories = Category::all();
         
-        return view('frondend.customerlogin.registration',compact('categories'));
+        return view('frondend.customer.registration',compact('categories'));
         
     }
 
     public function store(Request $request){
-        
-       $customer = new Customer;
-        // $customer->id = $request->id;
-        //dd($request);
-        $customer->name = $request->name;
-        $customer->email = $request->email;
-        $customer->phone = $request->phone;
-        $customer->password = $request->password;
-        // $id = Customer::InsertGetId($customer);
+
+
+         $customer_data = array();
+         $customer_data['name'] =$request->name;
+         $customer_data['email']=$request->email;
+         $customer_data['phone']=$request->phone;
+         $customer_data['password']=$request->password;
+         $id = Customer::InsertGetId($customer_data);
          Session::put('id',$request->id);
-         Session::put('name',$request->name);
-         
-         
-        
-       
-        $customer->save();
-         return view('frondend.customerlogin.login');
+         Session::put('cus_name',$request->name);
+
+         return redirect('/customer_login');
         
         
         
@@ -73,5 +70,7 @@ class CustomerController extends Controller
         Session::flush();
         return redirect('/');
     }
+    
+    
     
 }
