@@ -72,6 +72,7 @@ class CheckoutController extends Controller
     }
 
     public function payment_way(Request $request){
+        
 
         // For Payment Table................
 
@@ -127,10 +128,30 @@ class CheckoutController extends Controller
         
         }
         
+        if($payment_method=='bikash'){
+            $categories = Category::all();
+            Cart::clear();
+            return view('frondend.payment.thanks',compact('categories'));
+        }
+        elseif($payment_method=='nogot'){
+            $categories = Category::all();
+            Cart::clear();
+            return view('frondend.payment.thanks',compact('categories'));
+            
+        }
+        elseif($payment_method=='cash'){
+            $categories = Category::all();
+            Cart::clear();
+            return view('frondend.payment.thanks',compact('categories'));
+            
+        }
         
         
         
         
     }
+
+
+    
     
 }

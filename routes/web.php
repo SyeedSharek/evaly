@@ -37,6 +37,7 @@ Route::get('/cat_by_id/{id}',[HomeController::class,'cat_by_product']);
 Route::get('/subcat_by_id/{id}',[HomeController::class,'subcat_by_product']);
 
 
+
 // Admin Route....................
 
 Route::get('/admins',[AdminController::class,'login']);
@@ -80,6 +81,8 @@ Route::get('/delete_cart/{id}',[CheckoutController::class,'cart_delete']);
 Route::get('/procedure',[CheckoutController::class,'shipping']);
 Route::get('/payment',[CheckoutController::class,'payment_index']);
 Route::post('/save_shipping_address',[CheckoutController::class,'save_shipping']);
+Route::post('/order_place',[CheckoutController::class,'payment_way']);
+
 
 
 // Customer 
@@ -88,5 +91,3 @@ Route::post('/login_check',[CustomerController::class,'login']);
 Route::get('/register',[CustomerController::class,'new_register']);
 Route::post('/create_customer',[CustomerController::class,'store']);
 Route::get('/customer_logout',[CustomerController::class,'logout']);
-
-Route::post('/order_place',[CheckoutController::class,'payment_way']);

@@ -75,7 +75,7 @@
 
       <div class="payment-method">
         <div class="input-radio">
-            <input type="radio" name="payment" id="payment-1" value="cash">
+            <input type="radio" name="payment" id="payment-1" value="cash" required>
             <label for="payment-1">
                 <span></span>
                 Cash On Delevary
@@ -85,7 +85,7 @@
             </div>
         </div>
         <div class="input-radio">
-            <input type="radio" name="payment" id="payment-2" value="bikash">
+            <input type="radio" name="payment" id="payment-2" value="bikash" required>
             <label for="payment-2">
                 <span></span>
                 Bikash
@@ -95,7 +95,7 @@
             </div>
         </div>
         <div class="input-radio">
-            <input type="radio" name="payment" id="payment-3" value="nogot">
+            <input type="radio" name="payment" id="payment-3" value="nogot" required>
             <label for="payment-3">
                 <span></span>
                 Nogot
